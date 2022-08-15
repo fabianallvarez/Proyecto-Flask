@@ -9,15 +9,22 @@ cabeceras = {
     "X-CoinAPI-Key": apikey
     }
 
-moneda_origen = input("¿Que moneda quieres cambiar?")
-moneda_destino = input("¿Que moneda deseas obtener?")
-url =f"https://rest-sandbox.coinapi.io/v1/exchangerate/{moneda_origen}/{moneda_destino}"
-respuesta = requests.get(url, headers=cabeceras)
-tipo_cambio = respuesta.json()
+seguir = "S"
 
-cambio = tipo_cambio["rate"]
+while seguir.upper()== "S":
+    moneda_origen = input("¿Que moneda quieres cambiar?")
+    moneda_destino = input("¿Que moneda deseas obtener?")
+    url =f"https://rest-sandbox.coinapi.io/v1/exchangerate/{moneda_origen}/{moneda_destino}"
+    respuesta = requests.get(url, headers=cabeceras)
+    tipo_cambio = respuesta.json()
 
-print("Un {} vale como {:,.2f} {}".format(
+    cambio = tipo_cambio["rate"]
+
+    print("Un {} vale como {:,.2f} {}".format(
     moneda_origen, cambio, moneda_destino,
-))
+    ))
+
+    seguir= ""
+    while seguir.upper() not in ('S', 'N'):
+        seguir = input("¿Quieres hacer mas cambios?")
  
