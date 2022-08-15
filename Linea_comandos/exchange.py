@@ -26,5 +26,5 @@ while seguir.upper()== "S":
 
     seguir= ""
     while seguir.upper() not in ('S', 'N'):
-        seguir = input("¿Quieres hacer mas cambios?")
+        seguir = input("¿Quieres hacer mas cambios? (S/N)")
  
