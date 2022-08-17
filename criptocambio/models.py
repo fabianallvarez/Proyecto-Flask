@@ -6,9 +6,9 @@ class APIError(Exception):
 
 class CriptoModel:
 
-    def __init__(self, origen, destino):
-        self.moneda_origen = origen
-        self.moneda_destino = destino
+    def __init__(self):
+        self.moneda_origen = ""
+        self.moneda_destino = ""
         self.cambio = 0.0
 
     def consultar_cambio(self):
