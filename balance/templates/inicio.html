@@ -18,26 +18,32 @@
     <nav>
         Inicio / Compra / Status
     </nav>
-
-    <table class="paper">
-        <tr>
-            <th>Fecha</th>
-            <th>Hora</th>
-            <th>Concepto</th>
-            <th>Tipo</th>
-            <th>Cantidad</th>
-        </tr>
-        {% for mov in movs %}
-         <tr>
-             <td>{{ mov.fecha }}</td>
-             <td>{{ mov.hora }}</td>
-             <td>{{ mov.concepto }}</td>
-             <td>{{ mov.tipo }}</td>
-             <td>{{ mov.cantidad}} </td>
+    <main>
+        <table class="paper">
+            <tr>
+                <th class="titulo tabla">Fecha</th>
+                <th class="titulo tabla">Hora</th>
+                <th class="titulo tabla">Concepto</th>
+                <th class="titulo tabla">Tipo</th>
+                <th class="titulo tabla">Cantidad</th>
             </tr>
-         {% endfor %}
-
-    </table>
+            {% for mov in movs %}
+            <tr>
+                <td>{{ mov.fecha }}</td>
+                <td>{{ mov.hora }}</td>
+                <td>{{ mov.concepto }}</td>
+                <td>
+                    {% if mov.tipo == 'I' %}
+                        Ingreso
+                    {% else %}
+                        Gasto
+                    {% endif %}
+                </td>
+                <td class="numero">{{ mov.cantidad}} </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </main>    
     <footer class="pie-de-pagina">2022 - Todos los derechos reservados</footer>
 </body>
 </html>

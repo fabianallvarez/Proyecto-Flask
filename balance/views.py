@@ -1,6 +1,6 @@
 from flask import render_template
 
-from . import app 
+from . import app
 from .models import ListaMovimientos
 
 
@@ -8,11 +8,13 @@ from .models import ListaMovimientos
 def home():
     movimientos = ListaMovimientos()
     movimientos.leer_archivo()
-    return render_template("inicio.html", movs=movimientos.lista_movimientos)
+    return render_template("inicio.html", movs=movimientos.movimientos)
+
 
 @app.route('/purchase')
 def compra():
     return "Realiza una compra"
+
 
 @app.route('/status')
 def estado():

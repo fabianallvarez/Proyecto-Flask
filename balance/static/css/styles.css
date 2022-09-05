@@ -1,4 +1,4 @@
-header{
+header {
     background-color: #265ab1;
     color: white;
     height: 50px;
@@ -13,4 +13,30 @@ nav {
     height: 20px;
     line-height: 20px;
     padding-left: 25px;
+}
+
+main {
+    max-width: 800px;
+    margin: auto;
+    padding: 0 20px;
+}
+
+table.paper {
+    width: 100%;
+   
+}
+
+.titulo-tabla {
+    border-bottom: #b8174c solid 1px;
+    text-align: left;
+}
+
+.numero {
+    text-align: right;
+}
+
+.pie-de-pagina {
+    margin-top: 40px;
+    padding: 20px;
+    border-top: solid 1px ;
 }
