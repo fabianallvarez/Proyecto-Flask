@@ -15,6 +15,10 @@ nav {
     padding-left: 25px;
 }
 
+nav.main-menu a {
+    color: white;
+}
+
 main {
     max-width: 800px;
     margin: auto;
