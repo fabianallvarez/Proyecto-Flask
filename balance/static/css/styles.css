@@ -1,5 +1,5 @@
 header {
-    background-color: #265ab1;
+    background-color: lightslategray;
     color: white;
     height: 50px;
     font-size: xx-large;
@@ -8,7 +8,7 @@ header {
 }
 
 nav {
-    background-color: #b8174c;
+    background-color: cadetblue;
     color: white;
     height: 20px;
     line-height: 20px;
@@ -35,8 +35,20 @@ table.paper {
     text-align: right;
 }
 
+table.paper .error {
+    font-size: small;
+    padding-left: 20px;
+    color: #900;
+}
+
 .pie-de-pagina {
     margin-top: 40px;
     padding: 20px;
     border-top: solid 1px ;
+}
+
+.lista-vacia {
+    text-align: center;
+    padding: 20px;
+    color: gray;
 }
