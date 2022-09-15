@@ -1,5 +1,4 @@
 from flask import render_template
-
 from . import app
 from .models import DBManager
 
@@ -23,4 +22,6 @@ def estado():
 
 @app.route("/borrar/<int:id>", methods=["GET", "POST"])
 def eliminar(id):
-    return render_template("borrar.html", resultado=True)
+    db = DBManager(RUTA)
+    esta_borrado: db.borrar(id)
+    return render_template("borrar.html", resultado=esta_borrado)

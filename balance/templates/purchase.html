@@ -12,22 +12,43 @@ Mycripto Compras
 {% block contenido %}
 {{ super() }}
 
-<div class="from">
-    <p>From</p>
-</div>
-<div class="to">
-    <p>To</p>
-</div>
+<!--
+  CRUD: Create, Read, Update, Delete
+  GET: read
+  POST: create, delete
+  PUT: update
+ -->
+<form action="/nuevo" method="post">
 
-<select class="opcion-from">
-    <option></option>
-    <option></option>
-</select>
+  <div class="campo-formulario">
+    <label for="fecha">Fecha</label>
+    <input type="date" id="fecha" name="fecha">
+  </div>
 
-<select class="opcion-to">
-    <option></option>
-    <option></option>
-</select>
+  <div class="campo-formulario">
+    <label for="hora">Hora</label>
+    <input type="time" id="hora" name="hora">
+  </div>
 
+  <div class="campo-formulario">
+    <label for="cantidad">From</label>
+    <input type="text" id="concepto" name="concepto" required>
+  </div>
 
+  <div class="campo-formulario">
+    <label for="cantidad">To</label>
+    <input type="number" id="concepto" name="concepto" required>
+  </div>
+
+  <div class="campo-formulario">
+    <label for="cantidad">Cantidad</label>
+    <input type="number" id="cantidad" name="cantidad" required>
+  </div>
+
+  <div class="acciones">
+    <!-- <input type="submit" value="Agregar"> -->
+    <button type="submit" class="blue-button">Agregar</button>
+  </div>
+
+</form>
 {% endblock %}
