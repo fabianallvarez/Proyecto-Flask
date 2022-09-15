@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block head_title %}
+Mycripto Compras
 {% endblock %}
 {{ super() }}: compras
 
@@ -10,7 +11,23 @@
 
 {% block contenido %}
 {{ super() }}
-<div class="panel">
-    <p>Hola, soy el formulario para crear movimientos</p>
+
+<div class="from">
+    <p>From</p>
 </div>
+<div class="to">
+    <p>To</p>
+</div>
+
+<select class="opcion-from">
+    <option></option>
+    <option></option>
+</select>
+
+<select class="opcion-to">
+    <option></option>
+    <option></option>
+</select>
+
+
 {% endblock %}

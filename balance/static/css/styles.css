@@ -1,3 +1,7 @@
+body {
+    background-color: lightgray;
+}
+
 header {
     background-color: lightslategray;
     color: white;
@@ -27,12 +31,16 @@ main {
 
 table.paper {
     width: 100%;
+    color: black;
+    text-align: center;
    
 }
 
 .titulo-tabla {
     border-bottom: #b8174c solid 1px;
-    text-align: left;
+    text-align: center;
+    margin: auto;
+    padding: 20px;
 }
 
 .numero {
@@ -45,14 +53,61 @@ table.paper .error {
     color: #900;
 }
 
+.lista-vacia {
+    text-align: center;
+    padding: 20px;
+    color: gray;
+}
+
+.button {
+    text-align: center;
+    color: cadetblue;
+}
+
+.rounded-button {
+    position: relative;
+    bottom: 55px; 
+    left: 700px;
+}
+
+.from {
+    position: relative; 
+    top: 80px; 
+    left: 20px; 
+    color: black; 
+    font-size: x-large
+}
+
+.to {
+    position: relative; 
+    top: 25px; 
+    left: 400px; 
+    color: black; 
+    font-size: x-large
+}
+
 .pie-de-pagina {
     margin-top: 40px;
     padding: 20px;
     border-top: solid 1px ;
 }
 
-.lista-vacia {
-    text-align: center;
-    padding: 20px;
-    color: gray;
+.opcion-from{
+    position: relative; 
+    top: 25px; 
+    left: 90px; 
+    color: black; 
+    font-size: x-large
+}
+
+.opcion-to{
+    position: relative; 
+    top: 25px; 
+    left: 400px; 
+    color: black; 
+    font-size: x-large
+}
+
+.rounded-button{
+    color: black;
 }

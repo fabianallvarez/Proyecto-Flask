@@ -26,5 +26,4 @@ class CriptoModel:
                     respuesta.status_code, respuesta.reason
                     )
                 )
-                
     pass
