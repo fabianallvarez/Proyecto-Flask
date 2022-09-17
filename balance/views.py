@@ -1,4 +1,4 @@
-from flask import render_template
+from flask import render_template, request
 from . import app
 from .models import DBManager
 
@@ -10,18 +10,12 @@ def home():
     movimientos = db.consultaSQL(" SELECT * FROM movimientos")
     return render_template("inicio.html", movs=movimientos)
 
-
-@app.route('/purchase', methods=["GET", "POST"])
-def compra():
+@app.route('/purchase/<int:id>', methods=["GET", "POST"])
+def compra(id):
+    if request.method == "GET":
+        render_template("form_movimiento.html")
     return render_template("purchase.html")
 
-
 @app.route('/status', methods=["GET", "POST"])
-def estado():
+def estado(id):
     return render_template("status.html")
-
-@app.route("/borrar/<int:id>", methods=["GET", "POST"])
-def eliminar(id):
-    db = DBManager(RUTA)
-    esta_borrado: db.borrar(id)
-    return render_template("borrar.html", resultado=esta_borrado)
