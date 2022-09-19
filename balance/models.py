@@ -1,7 +1,6 @@
 import sqlite3
 import csv
 from datetime import date, datetime
-from . import FICHERO
 
 class DBManager:
     def __init__(self, ruta):

@@ -1,6 +1,4 @@
 from flask import Flask
 
-
-FICHERO = "balance/data/movimientos.csv"
-
 app = Flask(__name__)
+app.config.from_prefixed_env()

@@ -5,14 +5,54 @@
 {% endblock %}
 
 {% block page_title %}
-Realiz tu Compra
+Realiza tu Compra
 {% endblock %}
 
 {% block contenido %}
 {{ super() }}
 
-<form action="/purchase">
-    {{ form.csrf_token }}
+<form action="/modificar" method="POST">
+        {{ form.csrf_token }}
+       <!-- <div class="campo-formulario">
+          {{ form.Fecha.label }}
+          {{ form.Fecha }}
+        </div>
+      
+        <div class="campo-formulario">
+          {{ form.Hora.label }}
+          {{ form.Hora }}
+        </div>-->
+      
+        <div class="campo-formulario-D">
+          {{ form.Desde.label }}
+          {{ form.Desde }}
+        </div>
 
-    
-</form>
+        <div class="campo-formulario-C">
+            {{ form.Cantidad.label }}
+            {{ form.Cantidad }}
+        </div>
+
+        <div class="campo-formulario-H">
+            {{ form.Hacia.label }}
+            {{ form.Hacia }}
+        </div>
+
+        <div class="campo-formulario-CC">
+            {{ form.C.label }}
+            {{ form.C }}
+        </div>
+
+        <div class="campo-formulario-PU">
+            {{ form.PU.label }}
+            {{ form.PU }}
+        </div>
+
+        <div class="acciones">
+            {{ form.cancelar }}
+            {{ form.guardar }}
+        </div>
+
+      </form>
+      
+      {% endblock %}

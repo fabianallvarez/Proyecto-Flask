@@ -12,4 +12,5 @@ class ComprasForm(FlaskForm):
     C = DecimalField("C", places=2)
     PU = DecimalField("PU", places=2)
 
-    sumbit = SubmitField("Guradar")
+    cancelar = SubmitField("Cancelar")
+    guardar= SubmitField("Guardar")

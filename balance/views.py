@@ -11,13 +11,12 @@ def home():
     movimientos = db.consultaSQL(" SELECT * FROM movimientos")
     return render_template("inicio.html", movs=movimientos)
 
-@app.route('/purchase/<int:id>', methods=["GET", "POST"])
-def compra(id):
+@app.route('/purchase', methods=["GET", "POST"])
+def compra():
     if request.method == "GET":
         formulario = ComprasForm()
         return render_template("form_compra.html", form=formulario)
-    
 
 @app.route('/status', methods=["GET", "POST"])
-def estado(id):
+def estado():
     return render_template("status.html")
