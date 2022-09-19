@@ -1,5 +1,6 @@
 from flask import render_template, request
 from . import app
+from. forms import ComprasForm
 from .models import DBManager
 
 RUTA = 'balance/data/balance.db'
@@ -13,8 +14,9 @@ def home():
 @app.route('/purchase/<int:id>', methods=["GET", "POST"])
 def compra(id):
     if request.method == "GET":
-        render_template("form_movimiento.html")
-    return render_template("purchase.html")
+        formulario = ComprasForm()
+        return render_template("form_compra.html", form=formulario)
+    
 
 @app.route('/status', methods=["GET", "POST"])
 def estado(id):
