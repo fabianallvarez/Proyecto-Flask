@@ -43,36 +43,41 @@ def purchase():
     if Desde == 'EUR':
         resto = float('inf')
     
-    if resto < cantidad_Desde:
+    if resto < float(Desde):
         flash('Saldo Insuficiente')
         return redirect(url_for('/purchase'))
 
     if form.consulta_api.data:
             form.Desde.render_kw = {'readonly':True}
             return render_template('form_compra.html', form = form,
-                cantidad_to = round(cantidad_Desde,5),
+                Hacia = round(cantidad_Desde,5),
                 precio_unitario = round(cambio,5))
 
     elif form.cancelar.data:
             return redirect(url_for('purchase'))
 
     elif form.guardar.data:
-            fecha = date.today().isoformat()
-            hora = time(
+            Fecha = date.today().isoformat()
+            Hora = time(
                 datetime.now().hour,
                 datetime.now().minute,
                 datetime.now().second)
             consulta = 'INSERT INTO movimientos(Fecha, Hora, Desde, cantidad_Desde, Hacia, cantidad_Hacia) VALUES (?, ?, ?, ?, ?, ?)'
             params = (
-                fecha,
-                str(hora),
+                Fecha,
+                str(Hora),
                 Desde,
-                cantidad_Desde,
                 Hacia,
-                cantidad_Hacia)   
+                )   
             resultado = db.consultaConParametros(consulta, params)
 
+            if not resultado:
+                return render_template(
+                    'form_compra.html', form=form, id=id, errores=[
+                        'Ha fallado la operación de guardar en la base de datos'])
 
+            flash('Movimiento agregado correctamente ;)', category='exito')
+            return redirect(url_for('movimientos'))
 
 
 @app.route('/status', methods=["GET", "POST"])
