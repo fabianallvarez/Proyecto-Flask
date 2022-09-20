@@ -1,6 +1,7 @@
+import requests
 import sqlite3
-import csv
-from datetime import date, datetime
+
+from criptocambio import APIKEY
 
 class DBManager:
     def __init__(self, ruta):
@@ -28,3 +29,65 @@ class DBManager:
         conexion.close()
 
         return self.movimientos
+
+    def consultaConParametros(self, consulta, params):
+        conexion = sqlite3.connect(self.ruta)
+        cursor = conexion.cursor()
+        resultado = False
+        try:
+            cursor.execute(consulta, params)
+            conexion.commit()
+            resultado = True
+        except Exception as error:
+            print("ERROR DB:", error)
+            conexion.rollback()
+        conexion.close()
+
+        return resultado
+
+    def peticionConParametros(self, consulta, params):
+        
+        conexion = sqlite3.connect(self.ruta)
+        cursor = conexion.cursor()
+        resultado = 0
+        try:
+            cursor.execute(consulta, params)
+            dato = cursor.fetchone()
+            dato = dato[0]
+            if dato == None:
+                dato = 0
+            resultado = dato
+        except Exception as error:
+            print("ERROR DB:", error)
+
+        conexion.close()
+
+        return resultado
+
+class APIError(Exception):
+    pass
+
+class CriptoModel:
+
+    def __init__(self):
+        self.moneda_origen = ""
+        self.moneda_destino = ""
+        self.cambio = 0.0
+
+    def consultar_cambio(self):
+        cabeceras = {
+            "X-CoinAPI-Key": APIKEY
+        }
+        url =f"https://rest-sandbox.coinapi.io/v1/exchangerate/{self.moneda_origen}/{self.moneda_destino}"
+        respuesta = requests.get(url, headers=cabeceras)
+
+        if respuesta.status_code == 200:
+            self.cambio = respuesta.json()["rate"]
+            print(self.cambio)
+        else:
+            raise APIError(
+                "Ha ocurrido un error {} {} al consultar la API".format(
+                    respuesta.status_code, respuesta.reason
+                    )
+                )
+        return self.cambio
